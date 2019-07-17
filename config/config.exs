@@ -5,7 +5,8 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+# use Mix.Config
+import Config
 
 config :access_news,
   ecto_repos: [AccessNews.Repo]
