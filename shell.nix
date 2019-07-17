@@ -96,13 +96,37 @@ pkgs.mkShell {
 
     pg_ctl -D $PGDATA -l $PGDATA/postgres.log  start
 
+    ####################################################################
+    # If $MIX_HOME doesn't exist, set it up.
+    ####################################################################
+
     if ! test -d $MIX_HOME
     then
+      ######################################################
+      # Install Hex and Phoenix
+      ######################################################
+
       yes | mix local.hex
       yes | mix archive.install hex phx_new
+
+      ######################################################
+      # `ecto.setup` is defined in `mix.exs` by default when
+      # Phoenix  project  is  generated via  `mix  phx.new`.
+      # It  does  `ecto.create`,   `ecto.migrate`,  and  run
+      # `priv/seeds`.
+      ######################################################
+
       mix ecto.setup
     fi
   '';
+
+  ####################################################################
+  # Without  this, almost  everything  fails with  locale issues  when
+  # using `nix-shell --pure` (at least on NixOS).
+  # See
+  # + https://github.com/NixOS/nix/issues/318#issuecomment-52986702
+  # + http://lists.linuxfromscratch.org/pipermail/lfs-support/2004-June/023900.html
+  ####################################################################
 
   LOCALE_ARCHIVE = if pkgs.stdenv.isLinux then "${pkgs.glibcLocales}/lib/locale/locale-archive" else "";
 }
