@@ -1,6 +1,6 @@
-defmodule TR2Web do
+defmodule AccessNews do
   @moduledoc """
-  TR2Web keeps the contexts that define your domain
+  AccessNews keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

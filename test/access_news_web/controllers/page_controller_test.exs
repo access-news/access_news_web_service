@@ -1,5 +1,5 @@
-defmodule TR2WebWeb.PageControllerTest do
-  use TR2WebWeb.ConnCase
+defmodule AccessNewsWeb.PageControllerTest do
+  use AccessNewsWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

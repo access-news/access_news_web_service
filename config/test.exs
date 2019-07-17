@@ -1,16 +1,16 @@
 use Mix.Config
 
 # Configure your database
-config :tr2_web, TR2Web.Repo,
+config :access_news, AccessNews.Repo,
   username: "postgres",
   password: "postgres",
-  database: "tr2_web_test",
+  database: "access_news_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :tr2_web, TR2WebWeb.Endpoint,
+config :access_news, AccessNewsWeb.Endpoint,
   http: [port: 4002],
   server: false
 

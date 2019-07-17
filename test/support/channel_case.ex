@@ -1,4 +1,4 @@
-defmodule TR2WebWeb.ChannelCase do
+defmodule AccessNewsWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule TR2WebWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint TR2WebWeb.Endpoint
+      @endpoint AccessNewsWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TR2Web.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(AccessNews.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(TR2Web.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(AccessNews.Repo, {:shared, self()})
     end
 
     :ok

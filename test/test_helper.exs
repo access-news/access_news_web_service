@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(TR2Web.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(AccessNews.Repo, :manual)

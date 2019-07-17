@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :tr2_web, TR2Web.Repo,
+config :access_news, AccessNews.Repo,
   username: "toraritte",
   password: "postgres",
-  database: "tr2_web_dev",
+  database: "access_news_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :tr2_web, TR2Web.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :tr2_web, TR2WebWeb.Endpoint,
+config :access_news, AccessNewsWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :tr2_web, TR2WebWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :tr2_web, TR2WebWeb.Endpoint,
+config :access_news, AccessNewsWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/tr2_web_web/{live,views}/.*(ex)$",
-      ~r"lib/tr2_web_web/templates/.*(eex)$"
+      ~r"lib/access_news_web/{live,views}/.*(ex)$",
+      ~r"lib/access_news_web/templates/.*(eex)$"
     ]
   ]
 

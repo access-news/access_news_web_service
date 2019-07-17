@@ -1,5 +1,5 @@
-defmodule TR2Web.Repo do
+defmodule AccessNews.Repo do
   use Ecto.Repo,
-    otp_app: :tr2_web,
+    otp_app: :access_news,
     adapter: Ecto.Adapters.Postgres
 end

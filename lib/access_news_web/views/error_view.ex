@@ -1,5 +1,5 @@
-defmodule TR2WebWeb.ErrorView do
-  use TR2WebWeb, :view
+defmodule AccessNewsWeb.ErrorView do
+  use AccessNewsWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

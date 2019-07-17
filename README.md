@@ -1,4 +1,4 @@
-# TR2Web
+# AccessNews
 
 To start your Phoenix server:
 

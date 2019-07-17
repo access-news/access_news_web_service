@@ -1,4 +1,4 @@
-defmodule TR2WebWeb.ErrorHelpers do
+defmodule AccessNewsWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -36,9 +36,9 @@ defmodule TR2WebWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(TR2WebWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(AccessNewsWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(TR2WebWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(AccessNewsWeb.Gettext, "errors", msg, opts)
     end
   end
 end

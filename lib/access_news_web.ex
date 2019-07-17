@@ -1,12 +1,12 @@
-defmodule TR2WebWeb do
+defmodule AccessNewsWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use TR2WebWeb, :controller
-      use TR2WebWeb, :view
+      use AccessNewsWeb, :controller
+      use AccessNewsWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,19 +19,19 @@ defmodule TR2WebWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: TR2WebWeb
+      use Phoenix.Controller, namespace: AccessNewsWeb
 
       import Plug.Conn
-      import TR2WebWeb.Gettext
-      alias TR2WebWeb.Router.Helpers, as: Routes
+      import AccessNewsWeb.Gettext
+      alias AccessNewsWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/tr2_web_web/templates",
-        namespace: TR2WebWeb
+        root: "lib/access_news_web/templates",
+        namespace: AccessNewsWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
@@ -39,9 +39,9 @@ defmodule TR2WebWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import TR2WebWeb.ErrorHelpers
-      import TR2WebWeb.Gettext
-      alias TR2WebWeb.Router.Helpers, as: Routes
+      import AccessNewsWeb.ErrorHelpers
+      import AccessNewsWeb.Gettext
+      alias AccessNewsWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -56,7 +56,7 @@ defmodule TR2WebWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import TR2WebWeb.Gettext
+      import AccessNewsWeb.Gettext
     end
   end
 

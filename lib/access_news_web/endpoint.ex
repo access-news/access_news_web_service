@@ -1,7 +1,7 @@
-defmodule TR2WebWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :tr2_web
+defmodule AccessNewsWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :access_news
 
-  socket "/socket", TR2WebWeb.UserSocket,
+  socket "/socket", AccessNewsWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -11,7 +11,7 @@ defmodule TR2WebWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :tr2_web,
+    from: :access_news,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
@@ -39,8 +39,8 @@ defmodule TR2WebWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_tr2_web_key",
-    signing_salt: "myzMuTwM"
+    key: "_access_news_key",
+    signing_salt: "xH4XdanZ"
 
-  plug TR2WebWeb.Router
+  plug AccessNewsWeb.Router
 end

@@ -7,16 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :tr2_web,
-  namespace: TR2Web,
-  ecto_repos: [TR2Web.Repo]
+config :access_news,
+  ecto_repos: [AccessNews.Repo]
 
 # Configures the endpoint
-config :tr2_web, TR2WebWeb.Endpoint,
+config :access_news, AccessNewsWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "P4iOiKQu82vyhwbx7tLebI3R8XkMo7h3PtCutsqYTbdqGUvDPddsG3ISwuFr/5Ws",
-  render_errors: [view: TR2WebWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: TR2Web.PubSub, adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "uEw04cxXlKcFuiKlxcJFSVelnyEyxNREGyPE9ABv+mBVGKFGjp8u5lNEUdkx6M2T",
+  render_errors: [view: AccessNewsWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: AccessNews.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

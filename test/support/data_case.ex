@@ -1,4 +1,4 @@
-defmodule TR2Web.DataCase do
+defmodule AccessNews.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule TR2Web.DataCase do
 
   using do
     quote do
-      alias TR2Web.Repo
+      alias AccessNews.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import TR2Web.DataCase
+      import AccessNews.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TR2Web.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(AccessNews.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(TR2Web.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(AccessNews.Repo, {:shared, self()})
     end
 
     :ok

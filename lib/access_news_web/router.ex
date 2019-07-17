@@ -1,5 +1,5 @@
-defmodule TR2WebWeb.Router do
-  use TR2WebWeb, :router
+defmodule AccessNewsWeb.Router do
+  use AccessNewsWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule TR2WebWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TR2WebWeb do
+  scope "/", AccessNewsWeb do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TR2WebWeb do
+  # scope "/api", AccessNewsWeb do
   #   pipe_through :api
   # end
 end
