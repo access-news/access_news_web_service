@@ -1,3 +1,11 @@
+####################################################################
+# Importing a cloned Nixpkgs repo  (from my home directory), because
+# the latest channels don't have Elixir 1.9.
+# See https://nixos.org/nix/manual/#idm140737317975776 for the meaning
+# of `<nixpkgs>` and `~` in Nix expressions (towards the end of that
+# section).
+####################################################################
+
 { pkgs ? import ~/clones/nixpkgs {} }:
 
 pkgs.mkShell {
@@ -59,7 +67,7 @@ pkgs.mkShell {
         # it didn't for me when exiting in a subdirectory.
         ######################################################
 
-        cd $PWD # otherwise it wont be able to delete stuff fromt the working dir
+        cd $PWD
         rm -rf $NIX_SHELL_DIR
       " \
       EXIT
@@ -117,6 +125,8 @@ pkgs.mkShell {
       ######################################################
 
       mix ecto.setup
+
+      mix deps.get
     fi
   '';
 
