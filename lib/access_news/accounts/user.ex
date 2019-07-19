@@ -4,10 +4,16 @@ defmodule AccessNews.Accounts.User do
 
   schema "users" do
     field :name, :string
-
-    # TODO: validation
     field :email, :string
 
     timestamps()
+  end
+
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:name, :email])
+    |> validate_required([:name, :email])
+    |> unique_constraint(:email)
+    # TODO: validate email
   end
 end
