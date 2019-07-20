@@ -34,7 +34,14 @@ defmodule AccessNews.Accounts.User do
     user
     |> registration_changeset(attrs)
     |> cast(attrs, [:password])
+    |> validate_required([:password])
     |> validate_length(:password, min: 10, max: 128)
     |> put_passwd_hash()
+  end
+
+  defp put_passwd_hash(changeset) do
+    case changeset do
+
+    end
   end
 end
