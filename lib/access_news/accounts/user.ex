@@ -5,15 +5,36 @@ defmodule AccessNews.Accounts.User do
   schema "users" do
     field :name, :string
     field :email, :string
+    field :password, :string, virtual: true
+    field :password_hash, :string
 
     timestamps()
   end
 
-  def changeset(user, attrs) do
+  def registration_changeset(user, attrs) do
     user
     |> cast(attrs, [:name, :email])
     |> validate_required([:name, :email])
     |> unique_constraint(:email)
-    # TODO: validate email
+    # TODO https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html#Email_Address_Validation (escpecially, normalize email addresses!)
+  end
+
+  # TODO
+  # https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+  # https://pages.nist.gov/800-63-3/sp800-63b.html#sec5
+  # + see entire document (on the sidebar there is also 63-A, 63-C, etc.
+  # + and especially section 5 Authenticator and Verifier Requirements
+  #
+  # Some authenticator libraries that need eval:
+  # + https://github.com/axelson/password-validator/issues/4
+  # + https://github.com/riverrun/not_qwerty123/blob/9778ab77db866778ad7a5874be6f4cf2818a5933/lib/not_qwerty123/password_strength.ex
+  # + https://github.com/heresydev/password
+  # + https://www.npmjs.com/package/owasp-password-strength-test
+  def password_changeset(user, attrs) do
+    user
+    |> registration_changeset(attrs)
+    |> cast(attrs, [:password])
+    |> validate_length(:password, min: 10, max: 128)
+    |> put_passwd_hash()
   end
 end
