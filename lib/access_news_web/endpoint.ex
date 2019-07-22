@@ -34,6 +34,15 @@ defmodule AccessNewsWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
 
+
+  # TODO Make this more secure as cookies are not encrypted
+  #      by default (see generated note below). Also, 
+  #      [Plug.Session.COOKIE](https://hexdocs.pm/plug/Plug.Session.COOKIE.html)
+  #      documentation  mentions Plug.Crypto,  but that  plug
+  #      doesn't  specify algo  (or  anything  else for  that
+  #      matter). Maybe it should be  rolled by hand based on
+  #      `comeonin`.
+
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.

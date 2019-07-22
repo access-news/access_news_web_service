@@ -11,7 +11,7 @@ defmodule AccessNews.Accounts.User do
     timestamps()
   end
 
-  def registration_changeset(user, attrs) do
+  def changeset(user, attrs) do
     user
     |> cast(attrs, [:name, :email])
     |> validate_required([:name, :email])
@@ -30,9 +30,13 @@ defmodule AccessNews.Accounts.User do
   # + https://github.com/riverrun/not_qwerty123/blob/9778ab77db866778ad7a5874be6f4cf2818a5933/lib/not_qwerty123/password_strength.ex
   # + https://github.com/heresydev/password
   # + https://www.npmjs.com/package/owasp-password-strength-test
-  def password_changeset(user, attrs) do
+
+  # TODO strengthen password settings in production
+
+  # TODO Add password validation field next to password.
+  def registration_changeset(user, attrs) do
     user
-    |> registration_changeset(attrs)
+    |> changeset(attrs)
     |> cast(attrs, [:password])
     |> validate_required([:password])
     |> validate_length(:password, min: 10, max: 128)
@@ -41,7 +45,11 @@ defmodule AccessNews.Accounts.User do
 
   defp put_passwd_hash(changeset) do
     case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: passwd}} ->
+        put_change(changeset, :password_hash, Argon2.hash_pwd_salt(passwd))
 
+      _ ->
+        changeset
     end
   end
 end

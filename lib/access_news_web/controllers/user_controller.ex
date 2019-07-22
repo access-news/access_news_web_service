@@ -3,6 +3,8 @@ defmodule AccessNewsWeb.UserController do
 
   alias AccessNews.Accounts
 
+  plug :authenticate_user when action in [:index, :show]
+
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.html", users: users)
@@ -14,14 +16,16 @@ defmodule AccessNewsWeb.UserController do
   end
 
   def new(conn, _params) do
-    changeset = Accounts.change_user(%Accounts.User{})
+    changeset = Accounts.change_registration(%Accounts.User{}, %{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"user" => user_params}) do
-    case Accounts.create_user(user_params) do
+    # case Accounts.create_user(user_params) do
+    case Accounts.register_user(user_params) do
       {:ok, user} ->
         conn
+        |> AccessNewsWeb.Auth.login(user)
         |> put_flash(:info, "#{user.name} added!")
         |> redirect(to: Routes.user_path(conn, :index))
 
