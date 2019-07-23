@@ -41,6 +41,13 @@ pkgs.mkShell {
     export MIX_ARCHIVES="$MIX_HOME/archives"
 
     ####################################################################
+    # Allow access to Google Cloud APIs
+    # See https://github.com/GoogleCloudPlatform/elixir-samples/tree/master/storage
+    ####################################################################
+
+    export GOOGLE_APPLICATION_CREDENTIALS=./service_account.json
+
+    ####################################################################
     # Clean up after exiting the Nix shell using `trap`.
     # ------------------------------------------------------------------
     # Idea taken from
