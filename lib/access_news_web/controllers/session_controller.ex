@@ -1,10 +1,12 @@
 defmodule AccessNewsWeb.SessionController do
   use AccessNewsWeb, :controller
 
+  # login
   def new(conn, _) do
     render(conn, "new.html")
   end
 
+  # post login form
   def create(
     conn,
     %{"session" => %{"email" => email, "password" => passwd}}

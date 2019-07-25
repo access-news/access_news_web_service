@@ -3,6 +3,8 @@ defmodule AccessNewsWeb.UserController do
 
   alias AccessNews.Accounts
 
+  # --- PLUGGED ----------------------------------------
+
   plug :authenticate_user when action in [:index, :show]
 
   def index(conn, _params) do
@@ -15,11 +17,15 @@ defmodule AccessNewsWeb.UserController do
     render(conn, "show.html", user: user)
   end
 
+  # ----------------------------------------------------
+
+  # registration
   def new(conn, _params) do
     changeset = Accounts.change_registration(%Accounts.User{}, %{})
     render(conn, "new.html", changeset: changeset)
   end
 
+  # post registration form
   def create(conn, %{"user" => user_params}) do
     # case Accounts.create_user(user_params) do
     case Accounts.register_user(user_params) do

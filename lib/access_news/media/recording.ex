@@ -12,7 +12,8 @@ defmodule AccessNews.Media.Recording do
   @doc false
   def changeset(recording, attrs) do
     recording
-    |> cast(attrs, [:recorded_at])
-    |> validate_required([:recorded_at])
+    |> change()
+    # |> cast(attrs, [:recorded_at])
+    # |> validate_required([:recorded_at])
   end
 end

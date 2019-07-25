@@ -1,4 +1,5 @@
-use Mix.Config
+# use Mix.Config
+import Config
 
 # Configure your database
 config :access_news, AccessNews.Repo,

@@ -15,15 +15,17 @@ defmodule AccessNewsWeb.RecordingController do
   end
 
   def create(conn, %{"recording" => recording_params}) do
-    case Media.create_recording(recording_params) do
-      {:ok, recording} ->
-        conn
-        |> put_flash(:info, "Recording created successfully.")
-        |> redirect(to: Routes.recording_path(conn, :show, recording))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
-    end
+    require IEx; IEx.pry
+    # case Media.create_recording(recording_params) do
+    #   {:ok, recording} ->
+    #     conn
+    #     |> put_flash(:info, "Recording created successfully.")
+    #     |> redirect(to: Routes.recording_path(conn, :show, recording))
+
+    #   {:error, %Ecto.Changeset{} = changeset} ->
+    #     render(conn, "new.html", changeset: changeset)
+    # end
   end
 
   def show(conn, %{"id" => id}) do

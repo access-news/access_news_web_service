@@ -4,6 +4,8 @@ defmodule AccessNewsWeb.Auth do
   import Phoenix.Controller
   alias AccessNewsWeb.Router.Helpers, as: Routes
 
+  # --- MODULE PLUG PART ----
+
   def init(opts), do: opts
 
   # TODO Clever and short, but make it explicit.
@@ -15,6 +17,8 @@ defmodule AccessNewsWeb.Auth do
 
     assign(conn, :current_user, user)
   end
+
+  # --- FUNCTION PLUGS ----
 
   def login(conn, user) do
     conn
